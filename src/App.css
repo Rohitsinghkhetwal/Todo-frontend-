@@ -1,0 +1,51 @@
+
+
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.inputBox {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.text {
+  font-size: 20px;
+  color: "white";
+}
+
+.btn {
+  padding: 10px;
+  margin: 5px;
+  font-weight: 500;
+}
+
+.heading {
+   background-color: #888;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.iteratorContainer {
+  width: 200px
+}
+
+.deletebtn {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+}
+.upbtn {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+
+}
