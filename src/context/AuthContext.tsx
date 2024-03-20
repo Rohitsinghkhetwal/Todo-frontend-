@@ -3,11 +3,10 @@ import { useContext, createContext } from "react";
 
 
 interface authProps {
-    onCreate: (todos: string) => Promise<any>,
-    onDelete: (id: any) => Promise<any>,
-    onUpdate: (id: any) => Promise<any>,
-    Getall: () => Promise<any>,
-    
+  onCreate: (todos: string) => Promise<any>;
+  onDelete: (id: any) => Promise<any>;
+  onUpdate: (id: any, todos: string) => Promise<any>;
+  Getall: () => Promise<any>;
 }
 
 const AuthContext = createContext<Partial<authProps>>({});
@@ -82,12 +81,37 @@ export const AuthProvider = ({ children}: any) => {
 
         }
     }
+
+    const UpdateTodos = async(id: any, todos: string) => {
+        try{
+            const data = await fetch(`${URL}/update/${id}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "appliction/json"
+                },
+                body: JSON.stringify({todo: todos})
+
+            });
+
+            const result = await data.json();
+            console.log("this is inside the update function", result);
+            return result;
+
+        }catch(err){
+            return {
+                err: true,
+                message: 'Something wrong in editing the documents'
+            }
+
+        }
+
+    }
    
 
     const items = {
         onCreate: CreateTodos,
         onDelete: DeleteTodos,
-        // onUpdate: UpdateTodos,
+        onUpdate: UpdateTodos,
         Getall: GetAllTodo,
     }
     return <AuthContext.Provider value={items}>{children}</AuthContext.Provider>

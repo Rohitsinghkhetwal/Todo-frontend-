@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 function Homepage() {
   const [input, setInput] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false)
-  const { onCreate, Getall,onDelete } = useAuth();
+  const { onCreate, Getall, onDelete, onUpdate } = useAuth();
   const [data, setData] = useState<any>([]);
 
   useEffect(() => {
@@ -16,7 +16,6 @@ function Homepage() {
   const handleChange = (e: any) => {
     setInput(e.target.value);
   }
-  console.log("this is a inut ", input);
   
   const handleSubmit = async() => {
     if(!input){
@@ -61,6 +60,8 @@ function Homepage() {
     }
 
   }
+
+  
 
 
   return (
