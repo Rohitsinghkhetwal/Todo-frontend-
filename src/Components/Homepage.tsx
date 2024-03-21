@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 
+
 function Homepage() {
   const [input, setInput] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false)
@@ -61,7 +62,16 @@ function Homepage() {
 
   }
 
-  
+  const updateTodo = async(id: any, todo: string) => {
+    try{
+      const result = await onUpdate!(id, todo);
+      console.log("this is a result", result);
+
+    }catch(err){
+      console.log("something went wrong !");
+
+    }
+  }
 
 
   return (
